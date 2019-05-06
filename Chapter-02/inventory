@@ -1,0 +1,5 @@
+mybox ansible_ssh_host=127.0.0.1 ansible_ssh_port=10100 ansible_user=vagrant ansible_ssh_private_key_file=".vagrant/machines/default/virtualbox/private_key"
+
+
+[tag_Purpose_nginx]
+mybox

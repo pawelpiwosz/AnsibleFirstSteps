@@ -1,0 +1,8 @@
+- hosts: tag_Purpose_nginx
+  gather_facts: true
+  become: true
+  become_method: "sudo"
+  serial: 1
+
+  roles:
+    - { role: "nginx", tags: ["nginx"] }
