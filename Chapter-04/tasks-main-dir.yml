@@ -1,0 +1,37 @@
+---
+- name: Add Nginx repository
+  command: add-apt-repository -y ppa:nginx/stable
+           creates=/etc/apt/sources.list.d/nginx-stable-saucy.list
+  become: true
+  tags:
+    - nginx
+
+- name: Install packages
+  apt:
+    pkg: ['nginx', 'htop', 'curl', 'wget']
+    state: present
+    update_cache: yes
+  become: true
+  tags:
+    - nginx
+
+- name: Upload default config file
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart nginx
+  tags:
+    - nginx
+
+- name: Create directories structure
+  file: path=/tmp/{{item}} state=directory owner="root" group="root"
+  loop:
+    - "application"
+    - "application/bin"
+    - "application/bin/usr"
+    - "application/logs"
+    - "application/config"
