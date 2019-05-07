@@ -76,7 +76,31 @@ example file. Those values will be used to customize the Nginx config later.
 Now it is time to create a playbook to run. Let's make it simple for now.
 The filename will be `provision.yml`.  
 
-Define the target and some configuration for the run:  
+At the beginning you need to install Python on remote machine. The problem with
+Ubuntu18 is simple - there is no Python preinstalled. You can do it inside
+the Vagrantfile, but it will be useless, when you want to run this playbook
+on AWS. So, let's do it using Ansible. Add to provision.yml those lines:  
+
+
+```
+- hosts: tag_Purpose_nginx
+  gather_facts: false
+  become: true
+  become_method: "sudo"
+  serial: 1
+
+  tasks:
+    - name: 'install python'
+      raw: sudo apt-get -y install python
+
+```
+
+First, gathering facts is disabled. To gather facts from remote machine, you
+need... yes, Python. Then using a `raw` module (I explain it a little later),
+Python is installed.
+
+Again, define the target and configuration for the run (yes, there will be two
+  sections with `hosts`):  
 
 ```
 - hosts: tag_Purpose_nginx

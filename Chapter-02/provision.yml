@@ -1,4 +1,14 @@
 - hosts: tag_Purpose_nginx
+  gather_facts: false
+  become: true
+  become_method: "sudo"
+  serial: 1
+
+  tasks:
+  - name: 'Install python for Ansible'
+    raw: sudo apt-get -y install python
+
+- hosts: tag_Purpose_nginx
   gather_facts: true
   become: true
   become_method: "sudo"
