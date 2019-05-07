@@ -21,7 +21,7 @@ worker_rlimit_nofile {{worker_connections_value}};
 
 (The full file is in this Chapter's examples.)
 
-Now, this file need to be copied to remote server. To do so, use `file` module.
+Now, this file need to be copied to remote server. To do so, use `template` module.
 
 ```
 - name: Upload default config file
