@@ -1,4 +1,4 @@
-## Chapter 3
+## Chapter 4
 ### Loops
 
 Loops in Ansible are very useful. The most simple, and most common use is
