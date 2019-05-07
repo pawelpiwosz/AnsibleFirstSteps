@@ -6,8 +6,8 @@ decide if the task should be executed, or not.
 There are more sophisticated ways to use conditionals, but this tutorial is
 getting started type, so I will focus on `when` only.
 
-But on the first step, let's focus on Nginx, and remove unnecessary code
-(task_main.yml).
+But on the first step, let's go back to proper track with Nginx, and remove
+unnecessary code (task_main.yml).
 
 #### When
 
@@ -24,9 +24,9 @@ Syntax of `when` conditional is simple. So, we have this task:
     - nginx
 ```
 
-The assumption was, that this playbook will be used for Ubuntu system. And what
-if this playbook will be run on other, like RHEL? It is high probability of
-errors.  
+The assumption on the beginning of this tutorial was, that this playbook will
+be used for Ubuntu system. And what if this playbook will be run on other,
+like RedHat? It is high probability, I can say - certainty of errors.  
 In this case, there is a possibility to limit targets for execution, using
 `when`:
 
@@ -61,7 +61,7 @@ be done in task as well:
 when: ansible_facts['os_family'] == "Debian" and environment == "Production"
 ```
 
-(environment in this example is a variable passed to playbook, or set in the
+(`environment` in this example is a variable passed to playbook, or set in the
   playbook)
 
 You can use `or` for the `when` statement as well.

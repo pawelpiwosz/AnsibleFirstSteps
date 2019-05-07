@@ -2,7 +2,7 @@
 ### Loops
 
 Loops in Ansible are very useful. The most simple, and most common use is
-iterate through list of arguments and install, create, remove, etc, directories,
+iterate through list of arguments and install, create, remove of directories,
 packages, users, and so on.
 
 #### The apt case
@@ -46,7 +46,7 @@ After the execution, you should see something like:
 ok: [mybox] => (item=['nginx', 'htop', 'curl', 'wget'])
 ```
 
-But...  
+__But...__  
 
 You probably also saw the deprecation warning... This is something sad for me,
 how often Ansible provides breaking changes. This is why I'm showing it here.

@@ -18,5 +18,6 @@ version has no Python installed. You need to do it by yourself.
 Chapter 1 [Environment preparation](Chapter-01/README.md)  
 Chapter 2 [Run ansible in Vagrant box](Chapter-02/README.md)  
 Chapter 3 [Add template](Chapter-03/README.md)  
-Chapter 4 [Loops](Chapter-04/README.md)
-Chapter 5 [Conditionals](Chapter-05/README.md)
+Chapter 4 [Loops](Chapter-04/README.md)  
+Chapter 5 [Conditionals](Chapter-05/README.md)  
+Chapter 6 [Variables](Chapter-06/README.md)  
