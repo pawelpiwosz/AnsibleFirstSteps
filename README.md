@@ -7,7 +7,7 @@ if not, don't worry, all needed examples are explained.
 The tutorial is organized in chapters. The point is, that each chapter has some
 new stuff, and all of them need to be "rewrite" to your project.
 
-As a prerequisities, you need to have:
+As the prerequisities, you need to have:
 * virtualbox
 * vagrant (2.1 or newer)
 * ansible (2.8 or newer)
@@ -17,3 +17,4 @@ Python installed. You need to do it by yourself.
 
 Chapter 1 [Environment preparation](Chapter-01/README.md)  
 Chapter 2 [Run ansible in Vagrant box](Chapter-02/README.md)  
+Chapter 3 [Add template](Chapter-03/README.md)  
