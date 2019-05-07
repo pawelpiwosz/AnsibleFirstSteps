@@ -25,7 +25,8 @@ In order to remove the instance, run `vagrant destroy`.
 ### Ansible preparation
 
 So, let's start with Ansible. Ansible need to know where to run playbooks. This
-structure should be flexible enough to be ready for different environments.
+structure should be flexible enough to be ready for different environments -
+this is one of the most important purposes of this tutorial.
 
 So, create this directory structure in root of your project:
 
@@ -58,18 +59,18 @@ Add to `inventory` file section:
 mybox
 ```  
 
-This will create a hostgroup named tag_Purpose_nginx with one member.  
+This will create a hostgroup named `tag_Purpose_nginx` with one member.  
 
 In environment/localenv directory create `group_vars/tag_Purpose_nginx`
 directories structure. Add `vars.yml`. file there. What is the use of it?
 `group_vars` combined with hostgroup allows to run playbooks against the
 specified group of hosts without any other parameter. `tag_Purpose_nginx` means,
-that on AWS the instance will be created with tag `Purpose`with `nginx` as
+that on AWS the instance will be created with tag `Purpose` with `nginx` as
 a value.
 
 ### First Ansible playbook  
 
-First, fill the vars.yml file created in last step. Put there the values from
+First, fill the `vars.yml` file created in last step. Put there the values from
 example file. Those values will be used to customize the Nginx config later.
 
 
@@ -77,9 +78,9 @@ Now it is time to create a playbook to run. Let's make it simple for now.
 The filename will be `provision.yml`.  
 
 At the beginning you need to install Python on remote machine. The problem with
-Ubuntu18 is simple - there is no Python preinstalled. You can do it inside
+Ubuntu 18 is simple - there is no Python preinstalled. You can do it inside
 the Vagrantfile, but it will be useless, when you want to run this playbook
-on AWS. So, let's do it using Ansible. Add to provision.yml those lines:  
+on AWS. So, let's do it using Ansible. Add to `provision.yml` those lines:  
 
 
 ```
@@ -157,7 +158,7 @@ the playbook. Templates with jinja2 are stored in `templates` directory.
 
 So, let's build the tasks file.  
 Create `main.yml` file in the tasks directory. The Vagrant box is based on
-Ubuntu 14, so the provisioning will be created for Ubuntu.
+Ubuntu 18, so the provisioning will be created for Ubuntu.
 
 Add this part to the file:
 
@@ -182,7 +183,7 @@ As you can see, the file is started with `---`. Then each task is starting with
 The base structure is simple:
 * name of the task (this will be shown during the execution)
 * type of module to use (in this case, there are `command` and `apt`)
-* despite the fact, that become is default value (check ansible.cfg), you can
+* despite the fact, that `become` is default value (check ansible.cfg), you can
 add it to each task.
 * tags. Those tags are used when you run playbook with specified tag(s):  
 ```
@@ -286,3 +287,6 @@ changed: [mybox]
 
 There is no use for the handler in this section, so remove it. It will be used
 elsewhere.
+
+Important to know: Handlers will not be executed, if there are no changes done
+by the task.
