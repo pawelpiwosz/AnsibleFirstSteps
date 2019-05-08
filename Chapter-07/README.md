@@ -5,18 +5,18 @@
 
 Ok, you already learned a lot about Ansible. I'm sure, you know also, that
 IaaS (Infrastructure as a Code) should be kept in Version Control system, like
-GitHub. And know you started to see some problem. Important problem. How to
-store sensitive data in the repository?
+GitHub. And now you started to see some problem, don't you? Important problem.
+How to store sensitive data in the repository?
 
 Ansible gives us some possibility to do that, but first, let's prepare the
 Nginx virtual server config and htpasswd file.
 
-In `tasks` directory create file nginx-config.yml, and put there two files
+In `tasks` directory create file `nginx-config.yml`, and put there two tasks:
 
 ```
 ---
 - name: Install vserver config
-  template: src=vserver.conf
+  template: src=vserver-template.conf
             dest=/etc/nginx/sites-enabled/vserver.conf
   notify: restart nginx
   when: ansible_facts['os_family'] == "Debian"
@@ -24,7 +24,7 @@ In `tasks` directory create file nginx-config.yml, and put there two files
     - nginx
 
 - name: Install htpasswd
-  htpasswd: path="/opt/htpasswd"
+  htpasswd: path="/opt/.htpasswd"
             name={{htpasswd_user}}
             password={{htpasswd_password}}
             owner=root
@@ -37,7 +37,7 @@ In `tasks` directory create file nginx-config.yml, and put there two files
 
 (nginx-config-1.yml)
 
-First task will copy vserv.conf file to its location, second will prepare
+First task will copy vserver.conf file to its location, second will prepare
 htpasswd file with user and password. Notice the `htpasswd` module, and
 conditional for vserver config file.
 
@@ -58,6 +58,8 @@ Let's add this task at the beginning of nginx-config.yml
 ```
 
 (nginx-config-2.yml)
+
+Do you see the loop through files?
 
 Now it is time to add our template.  
 Create file `vserver-template.conf` in `templates` directory.
@@ -132,7 +134,7 @@ included.
 Open tasks/main.yml and add on the end line:
 
 ```
-include: nginx-config.yml`
+include: nginx-config.yml
 ```
 
 (task-main.yml)
@@ -149,13 +151,13 @@ of the project. Now, this is not a best place to keep this file. Although we
 will leave it as is, and add `.vault_password` to `.gitignore`. This is
 obvious, I hope.
 
-Now, update the ansible.cfg file and add line in `[defaults]` section:
+Now, update the `ansible.cfg` file and add line in `[defaults]` section:
 
 ```
 vault_password_file = ./.vault_password
 ```
 
-(.vault_password)
+(ansible.cfg)
 
 Here is time to create encrypted file.
 
@@ -175,7 +177,7 @@ Saved file should be similar to:
 $ANSIBLE_VAULT;1.1;AES256
 62396237366566633039653339666131353163666535353936663430303462393565306330363362
 3337623437356430343338373634643964616233353633660a393364366165313066366339636637
-376262313434326132666233623838396663626134
+376262313434326132666233623838396663626134...
 ```
 
 As you see, Ansible didn't ask for password. It is configured and stored in
@@ -204,3 +206,5 @@ htpasswd_password: "{{vault_htpasswd_password}}"
 ```
 
 (vars-2.yml)
+
+Now you can in reasonable secure way send your project to GitHub.
