@@ -207,4 +207,4 @@ htpasswd_password: "{{vault_htpasswd_password}}"
 
 (vars-2.yml)
 
-Now you can in reasonable secure way send your project to GitHub.
+Now you can send your project to GitHub in reasonably secure way.
