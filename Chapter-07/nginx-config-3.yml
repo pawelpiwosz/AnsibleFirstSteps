@@ -1,0 +1,46 @@
+---
+- name: Remove default config
+  file:
+    path: "{{item}}"
+    state: absent
+  become: true
+  loop:
+    - /etc/nginx/sites-available/default
+    - /etc/nginx/sites-enabled/default
+  tags:
+    - nginx
+
+- name: Install pip package
+  apt:
+    pkg: ['python-pip', 'apache2-utils']
+    state: present
+    update_cache: yes
+  become: true
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - nginx
+
+- name: Install passlib Python package
+  pip:
+    name: passlib
+  tags:
+    - nginx
+
+- name: Install vserver config
+  template: src=vserver-template.conf
+            dest=/etc/nginx/sites-enabled/vserver.conf
+  notify: restart nginx
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - nginx
+
+- name: Install htpasswd
+  htpasswd: path="/opt/.htpasswd"
+            name={{htpasswd_user}}
+            password={{htpasswd_password}}
+            owner=root
+            group=www-data
+            mode=0640
+  notify: restart nginx
+  tags:
+    - nginx

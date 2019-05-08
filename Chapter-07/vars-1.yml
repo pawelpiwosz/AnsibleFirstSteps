@@ -1,0 +1,6 @@
+worker_connections_value: 100
+worker_rlimit_nofile_value: 1000
+backlog_value: 1024
+server_name_value: "newserver.com"
+htpasswd_user: "myuser"
+htpasswd_password: "secretpassword"

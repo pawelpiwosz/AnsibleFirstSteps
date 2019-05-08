@@ -1,0 +1,7 @@
+.vagrant
+venv
+*.retry
+.galaxy
+.library
+$HOME
+.vault_password

@@ -1,0 +1,19 @@
+---
+- name: Install vserver config
+  template: src=vserver-template.conf
+            dest=/etc/nginx/sites-enabled/vserver.conf
+  notify: restart nginx
+  when: ansible_facts['os_family'] == "Debian"
+  tags:
+    - nginx
+
+- name: Install htpasswd
+  htpasswd: path="/opt/.htpasswd"
+            name={{htpasswd_user}}
+            password={{htpasswd_password}}
+            owner=root
+            group=www-data
+            mode=0640
+  notify: restart nginx
+  tags:
+    - nginx

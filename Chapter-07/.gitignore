@@ -1,0 +1,6 @@
+.vagrant
+venv
+*.retry
+.galaxy
+.library
+$HOME
