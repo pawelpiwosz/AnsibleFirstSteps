@@ -1,7 +1,7 @@
 ## Chapter 6
 ### Variables
 
-Variables can be set in different ways. Can be stored in vars files, can be
+Variables can be set in couple ways. Can be stored in vars files, can be
 set in playbooks, overrided in command line in ansible-playbook command, or
 set (or generated) through tasks.
 
@@ -108,14 +108,15 @@ This example from documentation will store model of the device xvda.
 
 #### Register variable
 
-Registering variables gives you more flexibility to use new variable:
+Registering variables gives you more flexibility to use new variable. In this way 
+you can use registered variable later in the playbook.
 
 For example, you can register as variable the refference to HEAD in github repo.
 Why? For deployments, for example.
 
 ```
 - name: Get HEAD from branch
-  command: git ls-remote URL_to_repo | grep 'refs/heads/master'
+  command: git ls-remote --heads URL_to_repo | grep 'refs/heads/master'
   register: last_commit
 ```
 
@@ -136,15 +137,26 @@ Example:
 ```
 
 `set_fact` can be used with `register`. For example, when you register a
-dictionary (like in our example with repo HEAD), you wish to have only the hash
-to latest state.
+variable (like in our example with repo HEAD), Ansible will write a lot 
+of unrelevant (in this case) information, but you wish to have only the 
+hash of the latest state, and then you can send an information contains 
+this hash to Slack, email, or so.
 
 ```
 - name: Get HEAD from branch
-  command: git ls-remote URL_to_repo | grep 'refs/heads/master'
+  command: git ls-remote --heads URL_to_repo | grep 'refs/heads/master'
   register: last_commit
 
 - name: Set hash from branch
   set_fact:
     last_commit_hash="{{last_commit.stdout_lines[0][0:7]}}"
+```
+
+#### Setting variables in command line
+
+If you wish to override some variable, you can do it during ansible-playbook 
+execution. This has the highest priority.
+
+```
+ansible-playbook provision.yml -e my_var="something"
 ```
