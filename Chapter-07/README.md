@@ -139,6 +139,8 @@ include: nginx-config.yml
 
 (task-main.yml)
 
+And run the provisioning again.
+
 #### Encrypt source.
 
 But, hey, `vars.yml` contains _unencrypted_ password! This cannot be sent to
