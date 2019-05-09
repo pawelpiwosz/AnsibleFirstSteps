@@ -188,6 +188,7 @@ file, ready to use.
 Useful commands for working with ansible-vault:
 * `ansible-vault edit` - in order to edit encrypted file
 * `ansible-vault create` - in order to create encrypted file
+* `ansible-vault view` - in order to view encrypted file
 * `ansible-vault rekey` - in order to change encryption key
 * `ansible-vault encrypt` - in order to encrypt the file
 * `ansible-vault decrypt` - reverse to previous one
