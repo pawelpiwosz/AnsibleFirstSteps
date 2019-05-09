@@ -1,5 +1,5 @@
 ## Chapter 8
-### Create EC2 instance
+### Create first EC2 instance
 
 Let's start to build EC2 instance. In this case you need another playbook.
 `provision.yml` is for provisioning purpose. So, let's create `createec2.yml`.
