@@ -24,3 +24,4 @@ Chapter 6 [Variables](Chapter-06/README.md)
 Chapter 7 [Ansible vault](Chapter-07/README.md)  
 Chapter 8 [Prepare AWS ready environment](Chapter-08/README.md)  
 Chapter 9 [Create first EC2 instance](Chapter-09/README.md)  
+Chapter 10 Customize EC2

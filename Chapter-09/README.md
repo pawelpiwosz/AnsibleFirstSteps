@@ -37,9 +37,22 @@ Subnets ID, Security Group, etc.
           Purpose: "nginx"
           Provisioned: "Ansible"
 
-  - include: provisioning.yml
+    - name: Waiting for SSH
+      local_action: wait_for host={{new_instance.instances[0].public_ip}} port=22  state=started
+
 
 ```
+
+First of all, gathering facts is off, you don't need it here. Then the task
+is running module `ec2` as a `local_action`. There are 3 ways to run tasks
+locally, and some say thay local_action is the less apropriate, but I like to
+use it for its clarity.  
+module `ec2` has some parameters which are obligate to set. As you probably
+know, to run ec2 in AWS you need to set region, subnet, security group,
+instance type, AMI and ssh key. Additionally, in the code above you can see,
+that the ec2 will have public ip (no matter what is the subnet setting), there
+will be some tags for describing the new resource and only one entity will be
+created.
 
 When finish, run this playbook:
 
@@ -68,24 +81,31 @@ Run awscli command, and check the output:
 (ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]'
 [
     [
-        "i-09c05b84b3c0f9a79",
+        "i-09c05b24b4c0f9a79",
         "t2.micro",
-        "52.211.75.213",
+        "52.123.45.678",
         "ansibletest"
     ]
 ]
 ```
 
-__Congratulations!__ you successfully started your first EC2 using Ansible!
+__Congratulations!__ you successfully started your first EC2 instance using
+Ansible!
 
-Now, do not forget to remove it :D
+You should be able to connect to your new instance
 
 ```
-(ansible)$ aws --profile ansible --region eu-west-1 ec2 terminate-instances --instance-ids i-09c05b84b3c0f9a79
+$ ssh -i ~/.ssh/ansibletutorial ubuntu@52.123.45.678
+```
+
+Now, do not forget to remove the instance :D
+
+```
+(ansible)$ aws --profile ansible --region eu-west-1 ec2 terminate-instances --instance-ids i-09c05b24b4c0f9a79
 {
     "TerminatingInstances": [
         {
-            "InstanceId": "i-09c05b84b3c0f9a79",
+            "InstanceId": "i-09c05b24b4c0f9a79",
             "CurrentState": {
                 "Code": 32,
                 "Name": "shutting-down"
