@@ -81,7 +81,8 @@ PLAY RECAP *********************************************************************
 Run awscli command, and check the output:
 
 ```
-(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]'
+(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query \
+'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]'
 [
     [
         "i-09c05b24b4c0f9a79",
@@ -104,7 +105,8 @@ $ ssh -i ~/.ssh/ansibletutorial ubuntu@52.123.45.678
 Now, do not forget to remove the instance :D
 
 ```
-(ansible)$ aws --profile ansible --region eu-west-1 ec2 terminate-instances --instance-ids i-09c05b24b4c0f9a79
+(ansible)$ aws --profile ansible --region eu-west-1 ec2 terminate-instances \
+--instance-ids i-09c05b24b4c0f9a79
 {
     "TerminatingInstances": [
         {

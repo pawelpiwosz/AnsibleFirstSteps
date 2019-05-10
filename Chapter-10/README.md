@@ -70,7 +70,8 @@ Let's execute this version.
 Check, if all is ok:
 
 ```
-(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]'
+(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query \
+'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]'
 
 [
     [
@@ -86,7 +87,8 @@ Let's create another instance, with another name. This time you will use the
 variables passed through command line:
 
 ```
-(ansible)$ AWS_PROFILE=ansible ansible-playbook -i environment/testing/ createec2.yml -e ec2_name="ansibletest2" -e ec2_environment="testing"
+(ansible)$ AWS_PROFILE=ansible ansible-playbook -i environment/testing/ createec2.yml \
+-e ec2_name="ansibletest2" -e ec2_environment="testing"
 ```
 
 There are two variables passed to playbook. `ec2_name` and `environment`. The
@@ -95,7 +97,8 @@ variable files, and for creating a tag.
 Check again, this time change output to more readable:
 
 ```
-(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances --query 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]' --output table
+(ansible)$ aws --profile ansible --region eu-west-1 ec2 describe-instances \
+--query 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,Tags[?Key==`Name`]| [0].Value]' --output table
 ----------------------------------------------------------------------
 |                         DescribeInstances                          |
 +----------------------+-----------+-----------------+---------------+

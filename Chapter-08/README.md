@@ -110,7 +110,8 @@ create `environment/testing/group_vars/tag_Purpose_nginx/`.
 Prepare a key pair for ssh to ec2. Run using AWS CLI:
 
 ```
-$ aws ec2 create-key-pair --key-name ansibletutorial --query 'KeyMaterial' --output text > ~/.ssh/ansibletutorial.pem
+$ aws ec2 create-key-pair --key-name ansibletutorial --query 'KeyMaterial' \
+--output text > ~/.ssh/ansibletutorial.pem
 ```
 
 In output you will receive all needed data. Change file permission to `440`.
