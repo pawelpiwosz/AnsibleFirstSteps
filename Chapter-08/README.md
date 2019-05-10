@@ -48,7 +48,7 @@ So, let's check if our config is able to connect to AWS (remember, your AWS
 user has to have proper policies, and you need to have the virtualenv enabled!)
 
 ```
-./ec2.py --profile ansible --list
+(ansible)$ ./ec2.py --profile ansible --list
 ```
 
 Be prepared, the execution can take a while...
@@ -80,11 +80,11 @@ for localenv, and:
 ```
 
 Oh, this didn't work, I suppose. If so, it is because of `profile`. Let's fix
-it in the simplest, fastest, and... well, nit nice way, by passing profile to
+it in the simplest, fastest, and... well, not the best way, by passing profile to
 execution:
 
 ```
-AWS_PROFILE=ansible ansible environment/testing/ec2.py  --list
+(ansible)$ AWS_PROFILE=ansible ansible environment/testing/ec2.py --list
  [WARNING]: provided hosts list is empty, only localhost is available. Note
  that the implicit localhost does not match
 'all'
@@ -105,11 +105,10 @@ create `environment/testing/group_vars/tag_Purpose_nginx/`.
 
 #### Create a Key Pair
 
-First, you need a key pair for ssh to ec2. Run using AWS CLI:
+Prepare a key pair for ssh to ec2. Run using AWS CLI:
 
 ```
-$ aws ec2 create-key-pair --key-name ansibletutorial --query 'KeyMaterial'
---output text > ~/.ssh/ansibletutorial.pem
+$ aws ec2 create-key-pair --key-name ansibletutorial --query 'KeyMaterial' --output text > ~/.ssh/ansibletutorial.pem
 ```
 
 In output you will receive all needed data. Change file permission to `440`.
