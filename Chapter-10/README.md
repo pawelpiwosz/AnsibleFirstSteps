@@ -74,9 +74,9 @@ Check, if all is ok:
 
 [
     [
-        "i-05aad1fc0981a3309",
+        "i-05aad1fc0946a3309",
         "t2.micro",
-        "34.247.244.79",
+        "34.123.456.78",
         "ansibletest"
     ]
 ]
@@ -99,8 +99,8 @@ Check again, this time change output to more readable:
 ----------------------------------------------------------------------
 |                         DescribeInstances                          |
 +----------------------+-----------+-----------------+---------------+
-|  i-05aad1fc0981a3309 |  t2.micro |  34.247.244.79  |  ansibletest  |
-|  i-0617cfa41f1cb888c |  t2.micro |  34.244.203.30  |  ansibletest2 |
+|  i-05aad1fc0981a3309 |  t2.micro |  34.123.456.78  |  ansibletest  |
+|  i-0617cfa43d1cb888c |  t2.micro |  34.876.543.21  |  ansibletest2 |
 +----------------------+-----------+-----------------+---------------+
 ```
 
