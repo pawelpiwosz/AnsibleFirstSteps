@@ -1,0 +1,24 @@
+---
+# Environment name
+ec2_environment: "testing"
+
+# ec2 specific variable
+ec2_map:
+  eu-west-1:
+    ec2_ami_id: "ami-08d658f84a6d84a80"
+    ec2_sg: "<security group id>"
+    eu-west-1a:
+      ec2_subnet: "<VPC Subnet1 ID>"
+    eu-west-1b:
+      ec2_subnet: "<VPC Subnet2 ID>"
+ec2_type: "t2.micro"
+ec2_keyname: "ansibletutorial"
+ec2_name: "ansibletest"
+
+# Nginx config
+worker_connections_value: 100
+worker_rlimit_nofile_value: 1000
+backlog_value: 1024
+server_name_value: "newserver.com"
+htpasswd_user: "myuser"
+htpasswd_password: "{{ vault_htpasswd_password }}"

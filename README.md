@@ -26,3 +26,5 @@ Chapter 8 [Prepare AWS ready environment](Chapter-08/README.md)
 Chapter 9 [Create first EC2 instance](Chapter-09/README.md)  
 Chapter 10 [Customize EC2 task](Chapter-10/README.md)  
 Chapter 11 [More customization!](Chapter-11/README.md)  
+Chapter 12 [Provision ec2 instance](Chapter-12/README.md)  
+ 
