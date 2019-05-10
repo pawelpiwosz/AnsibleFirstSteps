@@ -47,7 +47,7 @@ First of all, gathering facts is off, you don't need it here. Then the task
 is running module `ec2` as a `local_action`. There are 3 ways to run tasks
 locally, and some say that local_action is the less appropriate, but I like to
 use this method for higher clarity.  
-module `ec2` has some parameters which are obligate to set. As you probably
+Module `ec2` has some parameters which are obligate to set. As you probably
 know, to run ec2 in AWS you need to set region, subnet, security group,
 instance type, AMI and ssh key. Additionally, in the code above you can see,
 that the ec2 will have public ip (no matter what is the subnet setting), there
