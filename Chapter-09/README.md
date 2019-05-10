@@ -9,8 +9,8 @@ instance to provision, and the create process will be executed. Think about it
 like about running AWS CLI command. Those commands are executing on your
 machine, and work with cloud.
 
-Remember to copy proper values in the fields. You need to provide VPC ID,
-Subnets ID, Security Group, etc.
+Remember to copy proper values in the fields. You need to provide VPC Subnet 
+ID, Security Group, etc.
 
 ```
 ---
@@ -54,7 +54,11 @@ that the ec2 will have public ip (no matter what is the subnet setting), there
 will be some tags for describing the new resource and only one entity will be
 created.
 
-When finish, run this playbook:
+Second task purpose is to wait when SSH will be enabled on the ec2 instance. 
+You can run other tasks in this playbook, and Ansible is using SSH for 
+communication, so it is a wise idea to have SSH available on remote machine.
+
+When created, run this playbook:
 
 ```
 (ansible)$ AWS_PROFILE=ansible ansible-playbook -i environment/testing/ createec2.yml
