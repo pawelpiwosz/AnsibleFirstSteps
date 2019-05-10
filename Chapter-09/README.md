@@ -1,4 +1,4 @@
-## Chapter 8
+## Chapter 9
 ### Create first EC2 instance
 
 Let's start to build EC2 instance. In this case you need another playbook.
@@ -9,7 +9,7 @@ instance to provision, and the create process will be executed. Think about it
 like about running AWS CLI command. Those commands are executing on your
 machine, and work with cloud.
 
-Remember to copy proper values in the fields. You need to provide VPC Subnet 
+Remember to copy proper values in the fields. You need to provide VPC Subnet
 ID, Security Group, etc.
 
 ```
@@ -54,8 +54,8 @@ that the ec2 will have public ip (no matter what is the subnet setting), there
 will be some tags for describing the new resource and only one entity will be
 created.
 
-Second task purpose is to wait when SSH will be enabled on the ec2 instance. 
-You can run other tasks in this playbook, and Ansible is using SSH for 
+Second task purpose is to wait when SSH will be enabled on the ec2 instance.
+You can run other tasks in this playbook, and Ansible is using SSH for
 communication, so it is a wise idea to have SSH available on remote machine.
 
 When created, run this playbook:
