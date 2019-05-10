@@ -3,11 +3,11 @@
 
 The playbook is already customized, but how about different availability zone?
 
-Let's prepare vars.yml file for this and a few similar cases. This time, you
+Let's prepare `vars.yml` file for this and a few similar cases. This time, you
 will create the dictionary, what is a flexible and easy to expand way of
 generating "maps" of variables.
 
-The new vars.yml should look like this:
+The new `vars.yml` should look like this:
 
 ```
 ---
@@ -28,7 +28,7 @@ ec2_keyname: "ansibletutorial"
 ec2_name: "ansibletest"
 ```
 
-Now it is time to change the task:
+Now it is time to change the task in `tasks/main.yml` file:
 
 ```
     - name: Create new instance
@@ -36,13 +36,10 @@ Now it is time to change the task:
         module: ec2
         region: "{{ec2_region}}"
         vpc_subnet_id: "{{ec2_map[ec2_region][ec2_zone]['ec2_subnet']}}"
-        #vpc_subnet_id: "{{ec2_subnet}}"
         assign_public_ip: "yes"
         instance_type: "{{ec2_type}}"
         image: "{{ec2_map[ec2_region]['ec2_ami_id']}}"
-        #image: "{{ec2_ami_id}}"
         group_id: "{{ec2_map[ec2_region]['ec2_sg']}}"
-        #group_id: "{{ec2_sg}}"
         key_name: "{{ec2_keyname}}"
         count: 1
         wait: yes
