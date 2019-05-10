@@ -36,11 +36,10 @@ ID, Security Group, etc.
           Environment:  "testing"
           Purpose: "nginx"
           Provisioned: "Ansible"
+      register: new_instance
 
     - name: Waiting for SSH
       local_action: wait_for host={{new_instance.instances[0].public_ip}} port=22  state=started
-
-
 ```
 
 First of all, gathering facts is off, you don't need it here. Then the task

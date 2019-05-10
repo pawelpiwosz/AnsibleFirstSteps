@@ -51,7 +51,9 @@ user has to have proper policies, and you need to have the virtualenv enabled!)
 (ansible)$ ./ec2.py --profile ansible --list
 ```
 
-Be prepared, the execution can take a while...
+Be prepared, the execution can take a while... In order to make it a little
+faster, find line `regions = all` in `ec2.py` file and change it to
+`regions = eu-west-1` (or this one, which you are using).
 
 If the result will be similar to this:
 
