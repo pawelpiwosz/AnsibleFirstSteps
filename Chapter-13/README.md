@@ -95,9 +95,9 @@ $ aws --profile ansible --region eu-west-1 ec2 describe-instances --query \
 ```
 
 This can be little confusing. The ec2 is removed, but still listed? Yes,
-ec2 is removed and it is in terminated state.
-
-Let's improve our check:
+ec2 is removed and it is in terminated state. You can observe, there is no
+Public IP assigned and no Subnet. That is a prompt, but let's check it more
+deeply, and improve the check:
 
 ```
 $ aws --profile ansible --region eu-west-1 ec2 describe-instances --query \ 'Reservations[].Instances[].[InstanceId,InstanceType,PublicIpAddress,SubnetId,State.Name,Tags[?Key==`Name`]| [0].Value]' \
