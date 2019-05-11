@@ -27,4 +27,4 @@ Chapter 9 [Create first EC2 instance](Chapter-09/README.md)
 Chapter 10 [Customize EC2 task](Chapter-10/README.md)  
 Chapter 11 [More customization!](Chapter-11/README.md)  
 Chapter 12 [Provision ec2 instance](Chapter-12/README.md)  
- 
+Chapter 13 [Remove resources from AWS](Chapter-13/README.md)
