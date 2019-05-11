@@ -1,8 +1,8 @@
 ## Chapter 15
 ### Roles structure
 
-In previous chapters you created your firs role.  Let us remind the current
-role structure.
+In previous chapters you created your first role. Let us remind the current
+structure in the role you were built.
 
 ```
 ~/ansible/roles/nginx$ ls
