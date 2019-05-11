@@ -1,0 +1,4 @@
+---
+- name: my_php
+  src: geerlingguy.php
+  version: 3.7.0
