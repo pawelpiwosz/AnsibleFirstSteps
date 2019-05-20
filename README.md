@@ -15,6 +15,7 @@ As the prerequisities, you need to have:
 Vagrant is using Ubuntu18 (bionic64) in this tutorial. Important is, that this
 version has no Python installed. You need to do it by yourself.
 
+Introduction [Say hello to Ansible](Introduction/README.md)  
 Chapter 1 [Environment preparation](Chapter-01/README.md)  
 Chapter 2 [Run ansible in Vagrant box](Chapter-02/README.md)  
 Chapter 3 [Add template](Chapter-03/README.md)  
@@ -33,3 +34,4 @@ Chapter 15 [Roles structure](Chapter-15/README.md)
 Chapter 16 [Ansible Galaxy](Chapter-16/README.md)  
 Chapter 17 [Deeper look into the playbooks](Chapter-17/README.md)  
 Chapter 18 [The good of Ansible is the bad](Chapter-18/README.md)  
+Chapter 19 [The pros and the cons](Chapter-19/README.md)
