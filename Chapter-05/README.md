@@ -78,3 +78,5 @@ when:
 
 In the example we were use the `==` operator. You can also negate: `!=`, use
 greater/lower or equal: `>=`, `<=`, or greater/lower: `<`, `>`.
+
+## [Next Chapter](../Chapter-06/README.md)

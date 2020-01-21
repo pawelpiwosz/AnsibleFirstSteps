@@ -114,3 +114,5 @@ terminated. AWS shows terminated resource for some period of time. Don't worry
 about it.
 
 And, as always... no, not this time. You removed the instance already ;)
+
+## [Next Chapter](../Chapter-14/README.md)

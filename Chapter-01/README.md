@@ -21,6 +21,8 @@ boto
 
 `Ansible` is obvious, I hope, `boto` is the Python library for working with
 AWS.  
+**In case you don't have virtualenv installed you can install it via** ```pip install virtualenv```
+
 
 Now, copy the `setupenv.sh` file to your project directory, and run it.
 
@@ -52,3 +54,5 @@ making Ansible faster. In theory. I'll back to it later.
 
 (There is known issue with creating a `$HOME` directory by Ansible. You can
   simply delete it.)
+
+## [Next Chapter](../Chapter-02/README.md)

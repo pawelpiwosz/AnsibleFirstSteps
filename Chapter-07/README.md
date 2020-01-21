@@ -211,3 +211,6 @@ htpasswd_password: "{{vault_htpasswd_password}}"
 (vars-2.yml)
 
 Now you can send your project to GitHub in reasonably secure way.
+
+## [Next Chapter](../Chapter-08/README.md)
+

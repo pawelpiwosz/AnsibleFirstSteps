@@ -129,3 +129,6 @@ dependencies: []
 
 in the file. Other information you can find in documentation, or looking to
 existing Galaxy roles.
+
+## [Next Chapter](../Chapter-17/README.md)
+
