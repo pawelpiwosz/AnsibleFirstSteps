@@ -122,3 +122,5 @@ The only use case I see, is waiting for application start in background, or so.
 
 Not true loop, but on the top its function is similar to use case described
 earlier. `wait_for` will be used later, when the AWS EC2 instance will be build.
+
+## [Next Chapter](../Chapter-05/README.md)
