@@ -43,4 +43,4 @@ Now, this file need to be copied to remote server. To do so, use `template` modu
 Now, you can run the provisioning of new machine, or simply run
 `vagrant up --provision`.
 
-## [Next Chapter](../Chapter-03/README.md)
+## [Next Chapter](../Chapter-04/README.md)
